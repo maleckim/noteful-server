@@ -5,6 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const foldersRouter = require('./folders/folders-router.js')
 const notesRouter = require('./notes/notes-router.js')
+const bodyParser = require('body-parser')
 const { NODE_ENV } = require('./config')
 
 const app = express()
@@ -39,7 +40,8 @@ const spawn = require('child_process').spawn;
 const pythonProcess = spawn('python3',[`${PATH}`]);
 
 pythonProcess.stdout.on('data', function(data) {
-  console.log(data.toString())
+  // let obj = JSON.parse(data)
+  // console.log(obj)
   res.send(data);
   res.end();
 })
